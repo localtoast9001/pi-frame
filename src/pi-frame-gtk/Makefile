@@ -5,13 +5,15 @@ CC=gcc
 CPP=g++
 CFLAGS=-fPIC
 CPPFLAGS=-g
+PKG_CONFIG_CFLAGS=`pkg-config --cflags gtkmm-3.0`
 TARGET_ARCH=
 LOADLIBES=
 LDFLAGS=-lstdc++
 LDLIBS=-lm
+PKG_CONFIG_LDFLAGS= `pkg-config --libs gtkmm-3.0`
 RM=rm -f
 LD=ld
-TARGET=$(BIN)/ip-frame-gtk
+TARGET=$(BIN)/pi-frame-gtk
 
 default: all
 
@@ -21,13 +23,13 @@ OBJECTS=\
   $(O)/main.o
 
 $(TARGET): $(BIN) $(OBJECTS) $(LOADLIBES)
-	$(CC) $(LDFLAGS) $(TARGET_ARCH) $(OBJECTS) `pkg-config --libs gtk+-3.0` $(LOADLIBES) $(LDLIBS) -o $@
+	$(CC) $(LDFLAGS) $(TARGET_ARCH) $(OBJECTS) $(PKG_CONFIG_LDFLAGS) $(LOADLIBES) $(LDLIBS) -o $@
 
 $(BIN):
 	mkdir $(BIN)
 
 $(O)/%.o: %.cpp $(O) 
-	$(CPP) $(CFLAGS) $(CPPFLAGS) `pkg-config --cflags gtk+-3.0` $(TARGET_ARCH) -c -o $@ $<
+	$(CPP) $(CFLAGS) $(CPPFLAGS) $(PKG_CONFIG_CFLAGS) $(TARGET_ARCH) -c -o $@ $<
 
 $(O):
 	mkdir $(O)
