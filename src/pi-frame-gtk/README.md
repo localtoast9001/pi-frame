@@ -6,6 +6,8 @@ Follow these steps to install libraries. Then use GNU Make to build the app.
 
 ### Install GTK on Raspian
 ` sudo apt-get install libgtk-3-dev `
+` sudo apt-get install libgtkmm-3.0-dev `
 
 ### Install GTK on Fedora
 ` sudo dnf install gtk3-devel clutter-devel webkit2gtk3-devel libgda-devel gobject-introspection-devel `
+` sudo dnf install gtkmm30-devel `
