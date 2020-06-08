@@ -17,7 +17,7 @@ public:
 
 int main(int argc, char* argv[])
 {
-  auto app = Application::create(argc, argv, "org.example.pi-frame-gtk"); 
+  Glib::RefPtr<Application> app = Application::create(argc, argv, "org.example.pi-frame-gtk"); 
   main_window window;
   window.fullscreen();
 
