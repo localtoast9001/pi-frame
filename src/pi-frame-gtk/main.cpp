@@ -1,25 +1,21 @@
-#include <gtkmm/application.h>
-#include <gtkmm/window.h>
+/**
+ * Copyright (C) Jon Rowlett. All rights reserved.
+ **/
+#include "main_window.hpp"
 
 using namespace Gtk;
 using namespace std;
 
-class main_window : public Window
-{
-public:
-  main_window()
-  : Window()
-  {
-    set_title("Pi Frame");
-    resize(200, 200);
-  }
-};
-
+/**
+ * Main method
+ * @param argc count of arguments.
+ * @param argv array of C string arguments.
+ * @returns 0 for success. non-zero for failure.
+ **/
 int main(int argc, char* argv[])
 {
   Glib::RefPtr<Application> app = Application::create(argc, argv, "org.example.pi-frame-gtk"); 
-  main_window window;
-  window.fullscreen();
+  pi_frame::main_window window;
 
   return app->run(window);
 }

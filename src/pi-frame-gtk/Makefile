@@ -19,7 +19,11 @@ default: all
 
 all: $(TARGET)
 
+HEADERS=\
+  main_window.hpp
+
 OBJECTS=\
+  $(O)/main_window.o \
   $(O)/main.o
 
 $(TARGET): $(BIN) $(OBJECTS) $(LOADLIBES)
@@ -28,7 +32,7 @@ $(TARGET): $(BIN) $(OBJECTS) $(LOADLIBES)
 $(BIN):
 	mkdir $(BIN)
 
-$(O)/%.o: %.cpp $(O) 
+$(O)/%.o: %.cpp $(O) $(HEADERS)
 	$(CPP) $(CFLAGS) $(CPPFLAGS) $(PKG_CONFIG_CFLAGS) $(TARGET_ARCH) -c -o $@ $<
 
 $(O):
