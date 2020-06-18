@@ -12,6 +12,8 @@ namespace pi_frame
     {
         set_title("Pi Frame");
         resize(200, 200);
+        add(_slides_drawing_area);
+        _slides_drawing_area.show();
 
         add_events(Gdk::KEY_PRESS_MASK);
         if (_fullscreen)

@@ -20,11 +20,18 @@ default: all
 all: $(TARGET)
 
 HEADERS=\
-  main_window.hpp
+  arguments.hpp \
+  directory.hpp \
+  main_window.hpp \
+  slideshow_drawing_area.hpp \
+  slideshow.hpp
 
 OBJECTS=\
+  $(O)/arguments.o \
   $(O)/main_window.o \
-  $(O)/main.o
+  $(O)/main.o \
+  $(O)/slideshow_drawing_area.o \
+  $(O)/slideshow.o
 
 $(TARGET): $(BIN) $(OBJECTS) $(LOADLIBES)
 	$(CC) $(LDFLAGS) $(TARGET_ARCH) $(OBJECTS) $(PKG_CONFIG_LDFLAGS) $(LOADLIBES) $(LDLIBS) -o $@
