@@ -11,7 +11,7 @@ namespace pi_frame
     : Window(), _fullscreen(fullscreen)
     {
         set_title("Pi Frame");
-        resize(200, 200);
+        resize(640, 480);
         add(_slides_drawing_area);
         _slides_drawing_area.show();
 

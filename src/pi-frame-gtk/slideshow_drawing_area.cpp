@@ -29,11 +29,38 @@ namespace pi_frame
     bool slideshow_drawing_area::on_draw(
         const Cairo::RefPtr<Cairo::Context>& cr)
     {
+        double width = get_allocated_width();
+        double height = get_allocated_height();
+
+        Gdk::RGBA bg;
+        bg.set_rgba(0.0, 0.0, 0.0);
+        Gdk::Cairo::set_source_rgba(cr, bg);
+        cr->rectangle(0, 0, (int)width, (int)height);
+        cr->fill();
         if (_current)
         {
-            Gdk::Cairo::set_source_pixbuf(cr, _current, 100, 80);
-            cr->rectangle(110, 90, _current->get_width()-20, _current->get_height()-20);
+            cr->save();
+
+            // scale the image.
+            double image_width = (double)_current->get_width();
+            double image_height = (double)_current->get_height();
+            double x_scale = width / image_width;
+            double y_scale = height / image_height;
+            double scale = x_scale < y_scale ? x_scale : y_scale;
+            cr->scale(scale, scale);
+            
+            int x = (width - image_width * scale) / (2.0 * scale);
+            int y = (height - image_height * scale) / (2.0 * scale);
+            Gdk::Cairo::set_source_pixbuf(cr, _current, x, y);
+            cr->rectangle(
+                x,
+                y,
+                image_width * scale,
+                image_height * scale);
             cr->fill();
+
+            // put back the normal scale.
+            cr->restore();
         }
 
         return true;
