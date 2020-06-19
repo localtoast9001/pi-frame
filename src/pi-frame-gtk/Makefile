@@ -4,7 +4,7 @@ BIN=../../bin
 CC=gcc
 CPP=g++
 CFLAGS=-fPIC
-CPPFLAGS=-g
+CPPFLAGS=-g -std=c++11
 PKG_CONFIG_CFLAGS=`pkg-config --cflags gtkmm-3.0`
 TARGET_ARCH=
 LOADLIBES=
