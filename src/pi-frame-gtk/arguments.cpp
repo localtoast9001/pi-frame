@@ -3,6 +3,7 @@
  **/
 #include "arguments.hpp"
 #include <cstring>
+#include <stdlib.h>
 
 namespace pi_frame
 {
