@@ -49,14 +49,16 @@ namespace pi_frame
             double scale = x_scale < y_scale ? x_scale : y_scale;
             cr->scale(scale, scale);
             
-            int x = (width - image_width * scale) / (2.0 * scale);
-            int y = (height - image_height * scale) / (2.0 * scale);
+            double scaled_image_width = image_width * scale;
+            double scaled_image_height = image_height * scale;
+            int x = (width - scaled_image_width) / (2.0 * scale);
+            int y = (height - scaled_image_height) / (2.0 * scale);
             Gdk::Cairo::set_source_pixbuf(cr, _current, x, y);
             cr->rectangle(
                 x,
                 y,
-                image_width * scale,
-                image_height * scale);
+                image_width,
+                image_height);
             cr->fill();
 
             // put back the normal scale.
