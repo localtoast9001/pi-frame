@@ -46,11 +46,18 @@ namespace pi_frame
         bool on_key_press_event(GdkEventKey* event) override;
 
         /**
+         * Override from the Window class to perform initialization 
+         * when the window is realized.
+         **/
+        void on_realize() override;
+
+        /**
          * Called on the F11 key press event to toggle fullscreen.
          **/
         void toggle_fullscreen();
 
     private:
+        Glib::RefPtr<Gdk::Cursor> _blank_cursor;
         bool _fullscreen;
         slideshow_drawing_area _slides_drawing_area;
     };
