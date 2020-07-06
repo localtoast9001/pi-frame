@@ -43,7 +43,9 @@ namespace pi_frame
         Window::on_realize();
         if (!_blank_cursor)
         {
-            _blank_cursor = Gdk::Cursor::create(get_display(), "none");
+            // NOTE: This would be the preferred method, but it does not work on Pi
+            // _blank_cursor = Gdk::Cursor::create(get_display(), "none");
+            _blank_cursor = Gdk::Cursor::create(get_display(), Gdk::CursorType::BLANK_CURSOR);
         }
 
         if (_fullscreen)
@@ -59,10 +61,10 @@ namespace pi_frame
     {
         if (_fullscreen)
         {
-            unfullscreen();            
+            unfullscreen();
         }
         else
-        {          
+        {
             fullscreen();
         }
 
