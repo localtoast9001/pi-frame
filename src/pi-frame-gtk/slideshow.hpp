@@ -35,14 +35,14 @@ namespace pi_frame
          * @returns A shared pointer to the new slideshow.
          **/
         static std::shared_ptr<slideshow> create(
-            int interval_msecs,
+            long interval_msecs,
             const std::string& path);
 
         /**
          * Gets the interval between images.
          * @returns the interval between images in ms.
          **/
-        inline int interval_msecs() const
+        inline long interval_msecs() const
         {
             return _interval_msecs;
         }
@@ -58,7 +58,7 @@ namespace pi_frame
          * Sets the interval.
          * @param value the interval in ms.
          **/
-        inline void interval_msecs(int value)
+        inline void interval_msecs(long value)
         {
             _interval_msecs = value;
         }
@@ -80,7 +80,7 @@ namespace pi_frame
          **/
         static bool is_image(const std::string& file_name);
 
-        int _interval_msecs;
+        long _interval_msecs;
         std::list<Glib::RefPtr<Gdk::Pixbuf>> _images;
         std::list<Glib::RefPtr<Gdk::Pixbuf>>::iterator _current_image;
     };

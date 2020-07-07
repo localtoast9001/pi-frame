@@ -6,6 +6,7 @@
 #define __arguments_hpp__
 
 #include <string>
+#include <chrono>
 
 namespace pi_frame
 {
@@ -15,6 +16,11 @@ namespace pi_frame
     class arguments
     {
     public:
+        /**
+         * The default value for the interval if not specified.
+         **/
+        static const std::chrono::milliseconds DEFAULT_INTERVAL;
+
         /**
          * Initializes a new instance of the arguments class.
          **/
@@ -57,9 +63,9 @@ namespace pi_frame
          * Gets the interval.
          * @returns the interval in ms.
          **/
-        inline int interval_msecs() const
+        inline std::chrono::milliseconds interval() const
         {
-            return _interval_msecs;
+            return _interval;
         }
 
         /**
@@ -72,9 +78,28 @@ namespace pi_frame
         }
     
     private:
+        /**
+         * Tries to parse a duration from a string.
+         * @param value the text to parse.
+         * @param result on success, receives the parsed value.
+         * @return true if the value can be parsed; otherwise, false.
+         * @remarks
+         * The duration is expressed as a rational number followed
+         * immediately by an optional unit. The default unit is minutes.
+         * Other units are:
+         * ms - milliseconds.
+         * m or min - minutes.
+         * s - seconds.
+         * h or hr - hours.
+         * d - days.
+         **/
+        static bool try_parse_duration(
+            const std::string& value,
+            std::chrono::milliseconds& result);
+
         std::string _program_path;
         std::string _images_path;
-        int _interval_msecs;
+        std::chrono::milliseconds _interval;
         bool _fullscreen;
     };
 } // namespace pi_frame
