@@ -1,5 +1,5 @@
 # pi-frame-gtk
-This is an app that uses GTK 3.0 for UI and runs on Raspian.
+This is an app that uses GTK 3.0 for UI and runs on Raspian. Currently, you need to pull the code onto your Pi and do a local build. After that, you can have it launch on startup.
 
 ## Build
 Follow these steps to install libraries. Then use GNU Make to build the app.
@@ -11,6 +11,18 @@ Follow these steps to install libraries. Then use GNU Make to build the app.
 ### Install GTK on Fedora
 ` sudo dnf install gtk3-devel clutter-devel webkit2gtk3-devel libgda-devel gobject-introspection-devel `
 ` sudo dnf install gtkmm30-devel `
+
+### Make pi-frame-gtk
+Assuming you have done git clone into ~/pi-frame and are logged in as the pi user.
+` cd ~/pi-frame/src/pi-frame-gtk `
+` make `
+This will produce the binary ~/pi-frame/bin/pi-frame-gtk
+
+## Launching on Startup
+As the pi user, modify `~/.config/lxsession/LXDE-pi/autostart`
+Add the following line at the end:
+` @/home/pi/pi-frame/bin/pi-frame-gtk --fullscreen --interval 10 /home/pi/Pictures/ `
+This will launch the app in full screen and cycle through all the pictures in the pi user's Pictures/ directory with an interval of 10 minutes for each picture.
 
 ## Coding Conventions
 * snake_case. 
