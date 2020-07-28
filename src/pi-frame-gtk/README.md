@@ -12,6 +12,10 @@ Follow these steps to install libraries. Then use GNU Make to build the app.
 ` sudo dnf install gtk3-devel clutter-devel webkit2gtk3-devel libgda-devel gobject-introspection-devel `
 ` sudo dnf install gtkmm30-devel `
 
+### Disabling the screensaver and screen power off
+Follow the directions here: https://www.raspberrypi.org/documentation/configuration/screensaver.md
+Unfortunately, the only thing that seems to work is the UI for xscreensaver.
+
 ## Coding Conventions
 * snake_case. 
 * 4 spaces instead of tabs.
