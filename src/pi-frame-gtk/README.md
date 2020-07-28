@@ -24,6 +24,10 @@ Add the following line at the end:
 ` @/home/pi/pi-frame/bin/pi-frame-gtk --fullscreen --interval 10 /home/pi/Pictures/ `
 This will launch the app in full screen and cycle through all the pictures in the pi user's Pictures/ directory with an interval of 10 minutes for each picture.
 
+## Disabling the screensaver and screen power off
+Follow the directions here: https://www.raspberrypi.org/documentation/configuration/screensaver.md
+Unfortunately, the only thing that seems to work is the UI for xscreensaver.
+
 ## Coding Conventions
 * snake_case. 
 * 4 spaces instead of tabs.
