@@ -30,7 +30,7 @@ namespace pi_frame
     }
 
     shared_ptr<slideshow> slideshow::create(
-        int interval_msecs,
+        long interval_msecs,
         const std::string& path)
     {
         shared_ptr<slideshow> result = make_shared<slideshow>();
